@@ -1,0 +1,7 @@
+{
+  "name": "calculadora20202005863",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
