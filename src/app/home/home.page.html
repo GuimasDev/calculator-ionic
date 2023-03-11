@@ -7,8 +7,8 @@
     <ion-grid id="gridButtons">
       <ion-row>
         <ion-col ><ion-button size="large" color="warning" expand="block">%</ion-button></ion-col>
-        <ion-col ><ion-button size="large" color="warning" expand="block">CE</ion-button></ion-col>
-        <ion-col ><ion-button size="large" color="warning" expand="block">C</ion-button></ion-col>
+        <ion-col ><ion-button (click)="specialButton('cancelEntry')" size="large" color="warning" expand="block">CE</ion-button></ion-col>
+        <ion-col ><ion-button (click)="specialButton('cancel')" size="large" color="warning" expand="block">C</ion-button></ion-col>
         <ion-col ><ion-button (click)="specialButton('backspace')" size="large" color="light" expand="block">Del</ion-button></ion-col>
       </ion-row>
       <ion-row>

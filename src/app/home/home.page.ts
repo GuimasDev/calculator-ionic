@@ -92,6 +92,12 @@ export class HomePage {
       case "addPoint":
         this.addPoint();
         break;
+      case "cancelEntry":
+          this.cancelEntry();
+          break;
+      case "cancel":
+        this.cancel();
+        break;
     }
   }
   
@@ -130,6 +136,28 @@ export class HomePage {
     }
     this.refreshDisplay();
   }
+
+  cancelEntry(){
+    if (this.operator!.selected != null && this.numbers[1] != "0") {
+      this.numbers[1] = "0";
+    } else if (this.operator!.selected === null) {
+      this.numbers[0] = "0";
+    }
+    this.refreshDisplay();
+  }
+
+  cancel(){
+    this.numbers[0] = "0";
+    this.numbers[1] = "0";
+    this.operator!.deselect();
+    this.refreshDisplay();
+  }
   
   
 }
+
+/**
+ * CE apaga o numero ex: 45
+ * C apaga tudo
+ * backspace apaga 1 caracter
+ */
