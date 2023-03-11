@@ -39,12 +39,20 @@ export class HomePage {
     this.refreshDisplay();
   }
 
-  async setOperator(operator: {symbol: string, calc: any}){
-    if(this.numbers[0] != "0" && this.numbers[1] == "0"){
-      this.operator!.select(operator);
-    } else if(this.numbers[1] != "0") {
-      this.solveOperation();
-      this.operator!.select(operator);
+  async setOperator(operator: {symbol: string, calc: any, specialOp?: boolean}){
+    if (operator.specialOp === true) {
+      if (this.numbers[0] != "0" && this.operator!.selected === null) {
+        this.numbers[0] = this.oneTermCalculate(this.numbers[0], operator); 
+      } else if (this.numbers[1] != "0" && this.operator!.selected != null) {
+        this.numbers[1] = this.oneTermCalculate(this.numbers[1], operator); 
+      }
+    } else {
+      if(this.numbers[0] != "0" && this.numbers[1] == "0"){
+        this.operator!.select(operator);
+      } else if(this.numbers[1] != "0") {
+        this.solveOperation();
+        this.operator!.select(operator);
+      }
     }
     this.refreshDisplay();
   }
@@ -56,6 +64,10 @@ export class HomePage {
     this.numbers[1] = "0";
     this.operator!.deselect();
     this.refreshDisplay();
+  }
+
+  oneTermCalculate(num: string, operator: {symbol: string, calc: any}): string{
+    return operator.calc(Number(num));
   }
 
   calculate(): string{
@@ -79,7 +91,6 @@ export class HomePage {
     this.mainDisplay = display;
   }
 
-  
 
   specialButton(btn: string){
     switch (btn) {
@@ -155,9 +166,3 @@ export class HomePage {
   
   
 }
-
-/**
- * CE apaga o numero ex: 45
- * C apaga tudo
- * backspace apaga 1 caracter
- */

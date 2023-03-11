@@ -21,8 +21,21 @@ export class Operators {
 
     potentiation = {
         symbol: "^2",
-        calc: (a: number) => a*a
-    } /** terminar de implementar no homePage */
+        calc: (a: number) => a*a,
+        specialOp: true
+    }
+
+    sqrt = {
+        symbol: "",
+        calc: (a: number) => a**(1/2),
+        specialOp: true
+    }
+
+    inverse = {
+        symbol: "",
+        calc: (a: number) => (1/a),
+        specialOp: true
+    }
 
 
 
