@@ -19,6 +19,11 @@ export class Operators {
         calc: (a: number, b: number) => a/b
     }
 
+    potentiation = {
+        symbol: "^2",
+        calc: (a: number) => a*a
+    } /** terminar de implementar no homePage */
+
 
 
     selected: {symbol: string, calc: any} | null;
@@ -27,7 +32,7 @@ export class Operators {
         this.selected = null;
     }
 
-    select(operator: {symbol: string, calc: any}):void{
+    select(operator: {symbol: string, calc: any}):void {
         this.selected = operator;
     }
 

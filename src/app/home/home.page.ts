@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Operators } from '../classe/operators';
 
 
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -82,13 +83,40 @@ export class HomePage {
 
   specialButton(btn: string){
     switch (btn) {
+      case "backspace":
+        this.backspace();
+        break;
       case "changeSign":
-        this.changeSign();
+        this.changeNumberSign();
+        break;
+      case "addPoint":
+        this.addPoint();
         break;
     }
   }
+  
+  backspace(){
+    if (this.operator!.selected != null && this.numbers[1] != "0" && this.numbers[1].length > 0) {
+      this.numbers[1] = this.numbers[1].substring(0,this.numbers[1].length-1);
+      if (this.numbers[1] === "") this.numbers[1] = "0";
+    } else if (this.operator!.selected != null) {
+      this.operator!.deselect();
+    } else {
+      this.numbers[0] = this.numbers[0].substring(0,this.numbers[0].length-1);
+      if (this.numbers[0] === "") this.numbers[0] = "0";
+    }
+    this.refreshDisplay();
+  }
 
-  changeSign(){
+  addPoint(){
+    if (this.operator!.selected === null)
+      this.numbers[0] += ".";
+    else  
+      this.numbers[1] += "."
+    this.refreshDisplay();
+  }
+
+  changeNumberSign(){
     if (this.operator!.selected === null && this.numbers[0] != "0") {
       if (this.numbers[0][0] === "-")
         this.numbers[0] = this.numbers[0].replace("-", "");
