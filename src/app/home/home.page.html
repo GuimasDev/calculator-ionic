@@ -9,7 +9,7 @@
         <ion-col ><ion-button (click)="setOperator(this.operator!.percent)" size="large" color="warning" expand="block">%</ion-button></ion-col>
         <ion-col ><ion-button (click)="specialButton('cancelEntry')" size="large" color="warning" expand="block">CE</ion-button></ion-col>
         <ion-col ><ion-button (click)="specialButton('cancel')" size="large" color="warning" expand="block">C</ion-button></ion-col>
-        <ion-col ><ion-button (click)="specialButton('backspace')" size="large" color="light" expand="block">Del</ion-button></ion-col>
+        <ion-col ><ion-button (click)="specialButton('backspace')" size="large" color="light" expand="block"><ion-icon slot="icon-only" name="backspace-outline"></ion-icon></ion-button></ion-col>
       </ion-row>
       <ion-row>
         <ion-col ><ion-button (click)="setOperator(this.operator!.inverse)" size="large" color="warning" expand="block">1/x</ion-button></ion-col>
