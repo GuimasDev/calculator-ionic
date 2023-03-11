@@ -37,6 +37,12 @@ export class Operators {
         specialOp: true
     }
 
+    percent = {
+        symbol: "",
+        calc: (a: number) => (a/100),
+        specialOp: true
+    }
+
 
 
     selected: {symbol: string, calc: any} | null;

@@ -58,23 +58,29 @@ export class HomePage {
   }
 
   solveOperation(): void{
-    let result = String(this.calculate());
-    this.previousResultDisplay = this.formatNumber(this.numbers[0]) + " " + this.operator!.selected!.symbol + " " + this.formatNumber(this.numbers[1]) + " = " + this.formatNumber(result);
-    this.numbers[0] = result;
-    this.numbers[1] = "0";
-    this.operator!.deselect();
-    this.refreshDisplay();
+    if (this.operator!.selected != null){
+      let result = String(this.calculate());
+      this.previousResultDisplay = this.formatNumber(this.numbers[0]) + " " + this.operator!.selected!.symbol + " " + this.formatNumber(this.numbers[1]) + " = " + this.formatNumber(result);
+      this.numbers[0] = result;
+      this.numbers[1] = "0";
+      this.operator!.deselect();
+      this.refreshDisplay();
+    }
   }
 
   oneTermCalculate(num: string, operator: {symbol: string, calc: any}): string{
     return operator.calc(Number(num));
   }
 
-  calculate(): string{
-    let num1: number = Number(this.numbers[0]);
-    let num2: number = Number(this.numbers[1]);
+  calculate(): string | null{
+    if (this.operator!.selected != null) {
+      let num1: number = Number(this.numbers[0]);
+      let num2: number = Number(this.numbers[1]);
+      return this.operator!.selected!.calc(num1,num2);
+    } else {
+      return null;
+    }
     
-    return this.operator!.selected!.calc(num1,num2);
   }
 
   formatNumber(num: string): string{
@@ -128,8 +134,9 @@ export class HomePage {
   addPoint(){
     if (this.operator!.selected === null){
       if (this.numbers[0].indexOf(".") === -1) this.numbers[0] += ".";
-    } else  
+    } else 
       if (this.numbers[1].indexOf(".") === -1) this.numbers[1] += ".";
+    
     this.refreshDisplay();
   }
 
