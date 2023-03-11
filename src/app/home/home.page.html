@@ -1,20 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <div style="padding: 5%;">
+      <ion-input [(ngModel)]="previousResultDisplay" type="text" class="ion-padding-top" value="0" id="display2" readonly></ion-input>
+      <ion-input [(ngModel)]="mainDisplay" type="text" class="ion-padding-bottom" value="0" id="display" readonly></ion-input>
+    </div>
+    <ion-grid id="gridButtons">
+      <ion-row>
+        <ion-col ><ion-button size="large" color="warning" expand="block">%</ion-button></ion-col>
+        <ion-col ><ion-button size="large" color="warning" expand="block">CE</ion-button></ion-col>
+        <ion-col ><ion-button size="large" color="warning" expand="block">C</ion-button></ion-col>
+        <ion-col ><ion-button size="large" color="light" expand="block">Del</ion-button></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col ><ion-button size="large" color="warning" expand="block">1/x</ion-button></ion-col>
+        <ion-col ><ion-button size="large"color="warning" expand="block">X^2</ion-button></ion-col>
+        <ion-col ><ion-button size="large"color="warning" expand="block">Raiz</ion-button></ion-col>
+        <ion-col ><ion-button (click)="setOperator(this.operator!.division)" size="large"color="light" expand="block">/</ion-button></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col ><ion-button (click)="registerNumber('7')" size="large" expand="block">7</ion-button></ion-col>
+        <ion-col ><ion-button (click)="registerNumber('8')" size="large" expand="block">8</ion-button></ion-col>
+        <ion-col ><ion-button (click)="registerNumber('9')" size="large" expand="block">9</ion-button></ion-col>
+        <ion-col ><ion-button (click)="setOperator(this.operator!.multiplication)" size="large"color="light" expand="block">*</ion-button></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><ion-button (click)="registerNumber('4')" size="large" expand="block">4</ion-button></ion-col>
+        <ion-col><ion-button (click)="registerNumber('5')" size="large" expand="block">5</ion-button></ion-col>
+        <ion-col><ion-button (click)="registerNumber('6')" size="large" expand="block">6</ion-button></ion-col>
+        <ion-col><ion-button (click)="setOperator(this.operator!.subtraction)" size="large" color="light" expand="block">-</ion-button></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><ion-button (click)="registerNumber('1')" size="large" expand="block">1</ion-button></ion-col>
+        <ion-col><ion-button (click)="registerNumber('2')" size="large" expand="block">2</ion-button></ion-col>
+        <ion-col><ion-button (click)="registerNumber('3')" size="large" expand="block">3</ion-button></ion-col>
+        <ion-col><ion-button (click)="setOperator(this.operator!.sum)" size="large" color="light" expand="block">+</ion-button></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><ion-button (click)="specialButton('changeSign')" size="large"color="warning" expand="block">+/-</ion-button></ion-col>
+        <ion-col><ion-button (click)="registerNumber('0')" size="large" expand="block">0</ion-button></ion-col>
+        <ion-col><ion-button size="large"color="warning" expand="block">.</ion-button></ion-col>
+        <ion-col><ion-button (click)="solveOperation()" size="large"color="light" expand="block">=</ion-button></ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>
