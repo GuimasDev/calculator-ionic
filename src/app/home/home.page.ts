@@ -126,10 +126,10 @@ export class HomePage {
   }
 
   addPoint(){
-    if (this.operator!.selected === null)
-      this.numbers[0] += ".";
-    else  
-      this.numbers[1] += "."
+    if (this.operator!.selected === null){
+      if (this.numbers[0].indexOf(".") === -1) this.numbers[0] += ".";
+    } else  
+      if (this.numbers[1].indexOf(".") === -1) this.numbers[1] += ".";
     this.refreshDisplay();
   }
 
